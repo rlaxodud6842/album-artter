@@ -2,6 +2,10 @@ import os
 from pydub import AudioSegment
 
 def convert_wav_to_mp3(input_folder):
+    mp3_path = os.path.join(input_folder, "mp3")
+    if (os.path.isdir(mp3_path)):
+        return
+
     # MP3를 저장할 하위 폴더 생성
     output_folder = os.path.join(input_folder, "mp3")
     os.makedirs(output_folder, exist_ok=True)
@@ -16,4 +20,6 @@ def convert_wav_to_mp3(input_folder):
                 # WAV 파일을 MP3로 변환
                 sound = AudioSegment.from_wav(wav_file_path)
                 sound.export(output_file_path, format="mp3")
-    return output_folder
+                print(file + " is converted to mp3")
+
+    print("mp3 folder is created. GO to :" + output_folder)
