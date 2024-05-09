@@ -47,7 +47,7 @@ After the first time:
      2. Album Artist
      3. Total Track
 + Run the script
-    * Basic usage: `python album_artter <path/to/your/music/folder> -a <path/to/your/cover.jpg> -t <path/to/your/tag.txt>`
+    * Basic usage: `python main.py <path/to/your/music/folder> -a <path/to/your/cover.jpg> -t <path/to/your/tag.txt>`
  
 
 
