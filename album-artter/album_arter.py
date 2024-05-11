@@ -1,15 +1,16 @@
 import os
 from mutagen.mp3 import MP3
 from mutagen.id3 import ID3, TIT2, TPE1, TRCK, TALB, APIC, TYER
+import json
 
 class AlbumArter:
     def add_album_tag(self,songs_path,tag_path):
-        with open(tag_path, 'r') as f:
-            lines = f.readlines()
-            album_title = lines[0].strip()
-            artist = lines[1].strip()
-            total_tracks = int(lines[2].strip())
-            year = lines[3].strip()
+        with open(tag_path) as f:
+            data = json.load(f)
+            album_title = data['Album title']
+            artist = data['Album Artist']
+            total_tracks = data['Total Track Numbers']
+            year = str(data['Year'])
 
         idx = 1
         for root, _, files in os.walk(songs_path):

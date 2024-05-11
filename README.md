@@ -5,7 +5,7 @@
 ## 설치방법
 + 파이썬 3.7이상이 요구됩니다.
 + 가상환경 설정
-     *`python3 -m venv venv` or `python -m venv venv`
+     `python3 -m venv venv` or `python -m venv venv`
 + 가상환경 활성화
    Windows: `./venv/Scripts/activate` or `cd ./venv/Scripts` AND `activate`
 + requirements 설치
@@ -21,25 +21,28 @@
   ```
 
 ## 태그 설정
-+ tag.txt를 확인해서 EX를 참고해서 다음과 같이 수정해주세요.
++ tag.json를 확인해서 각 값에 원하는 입력을 해주세요.
 + ```
-  1. Album title
-   2. Album Artist
-   3. Total Track Numbers
-   4. YEAR
+    {
+    "Album title" : "Test Title",
+    "Album Artist": "Test Example",
+    "Total Track Numbers" : 7,
+    "Year": 2024
+    }
   ```
-  1과같은 숫자는 없어도 되며, 순서만 지켜주면 됩니다.
++ 데이터 타입을 지켜주세요!
 ## 앨범커버 설정
 + 앨범 커버는 `cover.png` 나 `cover.jpg`로 설정해주세요.
 
 ## 실행방법
   * 사용법: `python ./album-artter/main.py <path/songs> -a <path/cover.jpg> -t <path/tag.txt>`
+  * 예시: `python ./album-artter/main.py ./songs -a ./cover.jpg -t ./tag.json`
   * main을 잘 찾아서 실행시켜주세요
 
 ## 프로젝트 구조    
 ```
 │  cover.png
-│  tag.txt
+│  tag.json
 │
 ├─album-artter
 │      album_arter.py
@@ -52,3 +55,8 @@
         Songs2.wav
         Songs3.wav
 ```
+
+
+## TODO
++ 노래 타이틀 앨범스플리터에 국한되지 않고, 적절히 파싱되게 하기.
++ 최적화, 모듈화
