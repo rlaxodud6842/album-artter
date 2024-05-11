@@ -1,19 +1,18 @@
 import os
 from mutagen.mp3 import MP3
-from mutagen.id3 import ID3, TIT2, TPE1, TRCK, TALB, APIC
+from mutagen.id3 import ID3, TIT2, TPE1, TRCK, TALB, APIC, TYER
 
 class AlbumArter:
     def add_album_tag(self,songs_path,tag_path):
-        print(songs_path)
         with open(tag_path, 'r') as f:
             lines = f.readlines()
             album_title = lines[0].strip()
             artist = lines[1].strip()
             total_tracks = int(lines[2].strip())
+            year = lines[3].strip()
 
         idx = 1
         for root, _, files in os.walk(songs_path):
-            print("hi")
             for file in files:
                 try:
                     # MP3 파일 경로
@@ -23,9 +22,11 @@ class AlbumArter:
                     audio_file = MP3(mp3_file_path, ID3=ID3)
 
                     # 태그 추가
+                    audio_file.tags.add(TIT2(encoding=3, text=file[1:-4])) #제목에 .mp3 지우고, 앞에 숫자 지우기
                     audio_file.tags.add(TPE1(encoding=3, text=artist))
                     audio_file.tags.add(TALB(encoding=3, text=album_title))
                     audio_file.tags.add(TRCK(encoding=3, text=f"{idx}/{total_tracks}"))
+                    audio_file.tags.add(TYER(encoding=3, text=year))
 
                     # 저장
                     audio_file.save()

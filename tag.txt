@@ -1,0 +1,11 @@
+Album title
+Album Artist
+Total Track Numbers
+YEAR
+
+----------EX------------
+Makeinu
+Yorushika
+8
+2021
+You must keep Sequence!!

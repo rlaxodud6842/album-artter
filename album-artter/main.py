@@ -12,18 +12,15 @@ def main():
 
     args = parser.parse_args()
     mp3_converter.convert_wav_to_mp3(args.folder_path)
+    ar = album_arter.AlbumArter()
 
+    mp3_path = os.path.join(args.folder_path, "mp3")
     if args.art_path:
-        ar = album_arter.AlbumArter()
-        mp3_path = os.path.join(args.folder_path, "mp3")
         #앨범아트 넣기
         ar.add_album_art(mp3_path,args.art_path)
 
     if args.tag_path:
-        ar = album_arter.AlbumArter()
-        mp3_path = os.path.join(args.folder_path, "mp3")
-        print(args.folder_path)
-        print(mp3_path)
+        #태그 넣기
         ar.add_album_tag(mp3_path,args.tag_path)
 
 if __name__ == '__main__':
